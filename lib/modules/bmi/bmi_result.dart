@@ -4,7 +4,7 @@ class BMIResult extends StatelessWidget {
  final double result;
  final bool isMale;
  final int age;
- BMIResult({
+ const BMIResult({super.key,
   required this.result,
   required this.isMale,
    required this.age,
@@ -24,19 +24,19 @@ class BMIResult extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Gender:${isMale? "male": 'female' }'
-              ,style: TextStyle(
+              ,style: const TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
                 fontSize: 40
             ),),
             Text('Result: $result'
-              ,style: TextStyle(
+              ,style: const TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
                 fontSize: 40
             ),),
             Text('Age:$age'
-              ,style: TextStyle(
+              ,style: const TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
                 fontSize: 40

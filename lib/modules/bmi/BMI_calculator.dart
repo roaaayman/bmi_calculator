@@ -1,6 +1,8 @@
 import 'dart:math';
 
-import 'package:bmi_calculator/bmi_result.dart';
+//import 'package:bmi_calculator/bmi_result.dart';
+
+import 'package:bmi_calculator/modules/bmi/bmi_result.dart';
 import 'package:flutter/material.dart';
 
 class BmiCalculator extends StatefulWidget {
