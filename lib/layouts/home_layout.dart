@@ -1,9 +1,12 @@
 import 'package:bmi_calculator/modules/archivedtasks/archived_tasks_screen.dart';
 import 'package:bmi_calculator/modules/donetasks/done_tasks_screen.dart';
 import 'package:bmi_calculator/modules/newtasks/new_tasks_screen.dart';
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:sqflite/sqflite.dart';
+
+import '../constants.dart';
 
 class HomeLayout extends StatefulWidget {
   const HomeLayout({super.key});
@@ -21,7 +24,7 @@ class _HomeLayoutState extends State<HomeLayout> {
   var timecontroller = TextEditingController();
   var datecontroller = TextEditingController();
 
-  List<Map> tasks = [];
+
 
   final GlobalKey<ScaffoldState> scaffoldkey = GlobalKey<ScaffoldState>();
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
@@ -44,7 +47,12 @@ class _HomeLayoutState extends State<HomeLayout> {
         appBar: AppBar(
           title: const Text('TO DO APP'),
         ),
-        body: screens[currentindex],
+        body: ConditionalBuilder(
+          condition:  tasks.length>0,
+          builder: (context)=>screens[currentindex],
+          fallback: (context)=> Center(child: CircularProgressIndicator()),
+        )
+       ,
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             if (isbottomSheetShown) {
@@ -247,6 +255,9 @@ class _HomeLayoutState extends State<HomeLayout> {
       int id1 = await txn.rawInsert(
           'INSERT INTO tasks(title, date, time,status) VALUES(" $title", "$date", "$time","new")');
       print("insert done");
+      getdata(database).then((value) {
+        tasks = value;
+      });
     });
   }
 

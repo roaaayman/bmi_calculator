@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
-Widget buildTaskItem()=>   Padding(
+Widget buildTaskItem(Map model)=>   Padding(
   padding: const EdgeInsets.all(20),
   child: Row(
     children: [
       CircleAvatar(
         radius: 35.0,
         child: Text(
-            '2;00'
+            '${model['time']}',
+
         ),
       ),
-      SizedBox(width: 20,),
+      const SizedBox(width: 20,),
       Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            'TASK TITLE',
-            style: TextStyle(
+            '${model['title']}',
+            style: const TextStyle(
                 fontSize: 16.0,
                 fontWeight: FontWeight.bold
             ),
           ),
           Text(
-            '2 april',
-            style: TextStyle(
+            '${model['date']}',
+            style: const TextStyle(
               fontSize: 16.0,
               color: Colors.grey,
             ),

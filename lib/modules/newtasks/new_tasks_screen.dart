@@ -1,13 +1,15 @@
 import 'package:bmi_calculator/components/components.dart';
 import 'package:flutter/material.dart';
 
+import '../../constants.dart';
+
 class newTasks extends StatelessWidget {
-  const newTasks({super.key});
+
 
   @override
   Widget build(BuildContext context) {
     return ListView.separated
-      (itemBuilder: (context,index)=>buildTaskItem(),
+      (itemBuilder: (context,index)=>buildTaskItem(tasks[index]),
         separatorBuilder: (context,index)=>Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
@@ -15,7 +17,7 @@ class newTasks extends StatelessWidget {
             height: 1,
             color: Colors.grey.shade300,
           ),
-        ), itemCount: 10);
+        ), itemCount: tasks.length);
    
   }
 }
